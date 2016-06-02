@@ -4,6 +4,7 @@
 	<inherits name='com.badlogic.gdx.backends.gdx_backends_gwt' />
 
 	<inherits name='TuringMachineApplication' />
+	<inherits name='com.kotcrab.vis.vis-ui' />
 	<entry-point class='com.quexten.turingmachine.client.HtmlLauncher' />
 	
 	<set-configuration-property name="gdx.assetpath" value="../core/assets" />

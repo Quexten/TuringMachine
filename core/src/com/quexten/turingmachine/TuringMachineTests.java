@@ -4,22 +4,8 @@ import com.quexten.turingmachine.TuringTransition.Direction;
 
 public class TuringMachineTests {
 	
-	public static TuringMachine getTestMachine() {
-		TuringMachine machine = new TuringMachine("AAA");
-		TuringState q1 = new TuringState("q1", false);
-		q1.addTransition(new TuringTransition('A', 'B', "q2", Direction.Right));
-		machine.addState(q1);
-
-		TuringState q2 = new TuringState("q2", false);
-		q2.addTransition(new TuringTransition('A', 'C', "q1", Direction.Right));
-		q2.addTransition(new TuringTransition('$', '$', "q3", Direction.None));
-		machine.addState(q2);
-		
-		TuringState q3 = new TuringState("q3", true);
-		machine.addState(q3);
-		
-		machine.setCurrentState(q1);
-		return machine;
+	public static TuringMachine getTestMachine() {		
+		return getUnaryToBinaryMachine();
 	}
 	
 	public static TuringMachine getUnaryToBinaryMachine() {
@@ -79,6 +65,26 @@ public class TuringMachineTests {
 		
 		machine.setCurrentState("q0");
 		return machine;
+	}
+	
+	/**
+	 * This machine is just to validate the turing machine implementation working
+	 */
+	public void getWorkingExample() {
+		TuringMachine machine = new TuringMachine("AAA");
+		TuringState q1 = new TuringState("q1", false);
+		q1.addTransition(new TuringTransition('A', 'B', "q2", Direction.Right));
+		machine.addState(q1);
+
+		TuringState q2 = new TuringState("q2", false);
+		q2.addTransition(new TuringTransition('A', 'C', "q1", Direction.Right));
+		q2.addTransition(new TuringTransition('$', '$', "q3", Direction.None));
+		machine.addState(q2);
+		
+		TuringState q3 = new TuringState("q3", true);
+		machine.addState(q3);
+		
+		machine.setCurrentState(q1);
 	}
 	
 }

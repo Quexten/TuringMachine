@@ -16,13 +16,7 @@ public class TuringMachine {
 	public boolean finished = false;
 
 	public TuringMachine (String initialTape) {
-		// Clear Tape
-		for (int i = 0; i < tape.length; i++)
-			tape[i] = '$';
-
-		// Write Initial Tape
-		for (int i = 0; i < initialTape.length(); i++)
-			tape[currentPosition + i] = initialTape.charAt(i);
+		this.setTape(initialTape);
 	}
 
 	public void addState (TuringState state) {
@@ -42,7 +36,7 @@ public class TuringMachine {
 					write(transition.writeChar);
 					move(transition.dir);
 					break;
-				}				
+				}
 			}
 		} else {
 			Gdx.app.error("Turing", "Error - No Starting State");
@@ -74,6 +68,16 @@ public class TuringMachine {
 		else if (dir == Direction.Right)
 			currentPosition++;
 
+	}
+
+	public void setTape (String text) {
+		// Clear Tape
+		for (int i = 0; i < tape.length; i++)
+			tape[i] = '$';
+
+		// Write Initial Tape
+		for (int i = 0; i < text.length(); i++)
+			tape[currentPosition + i] = text.charAt(i);
 	}
 
 }
