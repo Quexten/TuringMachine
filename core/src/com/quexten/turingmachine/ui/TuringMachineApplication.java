@@ -30,7 +30,7 @@ public class TuringMachineApplication extends ApplicationAdapter {
 	SpriteBatch batch;
 	BitmapFont font;
 	Texture pointerTexture;
-
+	
 	@Override
 	public void create () {
 		VisUI.load();
@@ -74,7 +74,7 @@ public class TuringMachineApplication extends ApplicationAdapter {
 		for (int i = 0; i < machine.tape.length; i++) {
 			font.draw(batch, String.valueOf(machine.tape[i]), -machine.tape.length * spacing / 2 + i * spacing, 0);
 		}
-		font.draw(batch, machine.currentState.id, -Gdx.graphics.getWidth() / 2, 30 - Gdx.graphics.getHeight() / 2);
+		font.draw(batch, machine.currentState.id, -machine.tape.length * spacing / 2 + machine.currentPosition * spacing - 15,80);
 		batch.setColor(this.uiColor);
 		batch.draw(this.pointerTexture, -machine.tape.length * spacing / 2 + machine.currentPosition * spacing - 15,10);
 		batch.setColor(Color.WHITE);

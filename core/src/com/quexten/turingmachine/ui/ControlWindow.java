@@ -37,9 +37,7 @@ public class ControlWindow extends VisWindow {
 				((TuringMachineApplication)Gdx.app.getApplicationListener()).machine.setTape(inputField.getText());
 			}			
 		});
-		this.add(resetButton).fill();
-		this.row();
-		
+		this.add(resetButton).fill();	
 		VisTextButton stepButton = new VisTextButton("Step");
 		stepButton.addListener(new ChangeListener() {
 			@Override
@@ -47,7 +45,9 @@ public class ControlWindow extends VisWindow {
 				((TuringMachineApplication)Gdx.app.getApplicationListener()).machine.act();
 			}			
 		});
-		this.add(stepButton);
+		this.add(stepButton).fill();
+		this.row();
+		
 		VisTextButton runButton = new VisTextButton("Run");
 		runButton.addListener(new ChangeListener() {
 			@Override
@@ -56,6 +56,14 @@ public class ControlWindow extends VisWindow {
 			}			
 		});
 		this.add(runButton).fill();
+		VisTextButton pauseButton = new VisTextButton("Pause");
+		pauseButton.addListener(new ChangeListener() {
+			@Override
+			public void changed (ChangeEvent event, Actor actor) {
+				((TuringMachineApplication)Gdx.app.getApplicationListener()).paused = true;
+			}			
+		});
+		this.add(pauseButton).fill();
 		
 		
 		this.pack();
